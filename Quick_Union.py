@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class UFTreeNode(object):
     def __init__(self, num):
         # the group number
@@ -77,14 +78,22 @@ def quickUnion(elePair, eleNodeMap):
 
             # update weight
             root_1.weight += root_2.weight
-
+            
+			
             # make the root2 as a subtree of root1
             root_1.children.append(root_2)
-
+            # 添加父节点
+            root_2.parent = root_1
+			
             # update the group number of root2
             root_2.num = root_1.num
+            
 
         else:
             root_2.weight += root_1.weight
+           
+            
             root_2.children.append(root_1)
+            root_1.parent = root_2
             root_1.num = root_2.num
+            
